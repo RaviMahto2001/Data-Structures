@@ -1,0 +1,89 @@
+Q2. Spot the errors.
+
+i) This function inserts a node at the head
+of a single linked list
+
+insert(int info)
+{
+        
+newNode = new Node(info);
+         
+newNode->next = head;
+
+}
+
+--- Answers to (i) ---
+
+// asuming this function is a part of a class that contains the head of the list.(say SLL)
+then the correct code would be :-
+
+void SLL :: insert(int info)
+{
+        
+Node* newNode = new Node(info);  //corrected the node declaration
+         
+newNode->next = head; 
+
+head = newNode; //missing head modification now added
+
+}
+
+//asuming this function is independent function
+then the correct code would be :-
+
+void insert(int info, Node* &head) // we need to get pass the head as reference as we will be modifing it
+{
+        
+Node* newNode = new Node(info);  //corrected the node declaration
+         
+newNode->next = head; 
+
+head = newNode; //missing head modification now added
+
+}
+ 
+
+
+ii)This function traverses the single linked list
+
+traverse()
+{       
+while (head != NULL)      
+{          
+cout << head->Info;
+           
+head = head->next;      
+}
+}
+
+--- Answers to (ii) ---
+
+// asuming this function is a part of a class that contains the head of the list.(say SLL)
+then the correct code would be :-
+
+in this case head is a member of class, we cannot modify it in traverse function as it is unexpected.
+
+void SLL :: traverse()
+{   
+Node* head = this->head; //this will hide the head(member of class) and we get a local head    
+while (head != NULL)      
+{          
+cout << head->Info;
+           
+head = head->next;      
+}
+}
+
+//asuming this function is independent function
+then the correct code would be :-
+
+// as the head is not passed by reference so the actual head will not get modified
+void traverse(Node* head) // changed the declaration
+{      
+while (head != NULL)      
+{          
+cout << head->Info;
+           
+head = head->next;      
+}
+}
