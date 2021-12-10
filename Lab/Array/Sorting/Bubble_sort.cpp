@@ -9,7 +9,7 @@ void display_array(int x[],int n)
     }
 }
 
-int BubbleSort(int x[],int n)
+void BubbleSort(int x[],int n)
 {
     int temp;
     cout<<"Bubble sort ---"<<endl;

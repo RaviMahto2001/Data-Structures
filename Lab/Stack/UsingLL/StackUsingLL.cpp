@@ -23,6 +23,8 @@ class Stack{
 	void push(int value);
 	int pop();
 	int peek();
+	bool isempty()
+	{return (top==NULL)? true:false;}
 	void display();
 };
 void Stack :: push(int value)
@@ -116,8 +118,9 @@ void menu()
 		cout<<"1. Push"<<endl;
 		cout<<"2. Pop"<<endl;
 		cout<<"3. Peek"<<endl;
-		cout<<"4. Display"<<endl;
-		cout<<"5. Exit"<<endl;
+		cout<<"4. isEmpty"<<endl;
+		cout<<"5. Display"<<endl;
+		cout<<"6. Exit"<<endl;
 		cout<<"Enter your choice : ";cin>>choice;
 		cout<<endl;
 		switch(choice)
@@ -125,14 +128,19 @@ void menu()
 			case 1: PushMenu(); break;
 			case 2: PopMenu();break;
 			case 3: PeekMenu();break;
-			case 4: DisplayMenu();break;
-			case 5: exit(0);
+			case 4: if(s1.isempty())
+						cout<<"Stack is empty."<<endl;
+					else
+						cout<<"Stack is not empty."<<endl;
+					break;
+			case 5: DisplayMenu();break;
+			case 6: exit(0);
 			default: cout<<"Wrong!! choice try again..."<<endl;
 		}
 		cout<<endl;
 		system("pause");
 		system("cls");
-	}while(choice!=5);
+	}while(choice!=6);
 }
 int main(){
 	menu();
